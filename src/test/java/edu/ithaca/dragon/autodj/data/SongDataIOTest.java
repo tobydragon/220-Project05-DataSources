@@ -11,11 +11,25 @@ import edu.ithaca.dragon.autodj.Song;
 
 public class SongDataIOTest {
    
+    
     @Test
-    public void buildSongListFromCsv() throws IOException{
+    public void buildSongListFromJsonFileTest() throws IOException{
+        List<Song> allSongs = SongDataIO.buildSongListFromJsonFile("src/test/resources/97kSongs.json");
+        assertEquals(97350, allSongs.size());
+        assertEquals("Resonate", allSongs.get(0).getTitle());
+        System.out.println("Sample From json:");
+        for (int i=0; i<10; i++){
+            System.out.println(allSongs.get(i));
+        }
+    }
+
+    
+    @Test
+    public void buildSongListFromCsvTest() throws IOException{
         List<Song> allSongs = SongDataIO.buildSongListFromCsv("src/test/resources/Localify_100kSongs.csv");
         assertEquals(97350, allSongs.size()); //the amount without any names with commas
         assertEquals("Resonate", allSongs.get(0).getTitle());
+        System.out.println("Sample From csv:");
         for (int i=0; i<10; i++){
             System.out.println(allSongs.get(i));
         }
@@ -24,7 +38,7 @@ public class SongDataIOTest {
 
     public static void main(String[] args){
         try {
-            SongDataIO.buildFromCsvAndWriteToJson("src/test/resources/Localify_100kSongs.csv", "src/test/resources/93kSongs.json");
+            SongDataIO.buildFromCsvAndWriteToJson("src/test/resources/Localify_100kSongs.csv", "src/test/resources/97kSongs.json");
         }
         catch(IOException e){
             e.printStackTrace();
