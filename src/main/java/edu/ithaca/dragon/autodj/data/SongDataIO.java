@@ -9,9 +9,21 @@ import java.util.Random;
 import java.util.regex.Pattern;
 
 import edu.ithaca.dragon.autodj.Song;
+import edu.ithaca.dragon.io.JsonUtil;
 
 public class SongDataIO {
     public static Random random = new Random();
+    
+
+    public static List<Song> buildSongListFromJsonFile(String filename)throws IOException{
+        return JsonUtil.listFromJsonFile(filename, Song.class);
+    }
+
+    //------------   below here you can see how a json file can be created from csv, if you're interested
+    public static void buildFromCsvAndWriteToJson(String csvInputFilename, String jsonOutputFilename) throws IOException{
+        List<Song> allSongs = buildSongListFromCsv(csvInputFilename);
+        JsonUtil.toJsonFile(jsonOutputFilename, allSongs);    
+    }
     
     public static List<Song> buildSongListFromCsv(String filename) throws IOException{
         Pattern pattern = Pattern.compile(",");
@@ -32,4 +44,5 @@ public class SongDataIO {
         in.close();
         return allSongs;
     }
+    
 }

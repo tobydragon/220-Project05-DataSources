@@ -20,4 +20,14 @@ public class SongDataIOTest {
             System.out.println(allSongs.get(i));
         }
     }
+
+
+    public static void main(String[] args){
+        try {
+            SongDataIO.buildFromCsvAndWriteToJson("src/test/resources/Localify_100kSongs.csv", "src/test/resources/93kSongs.json");
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
 }
