@@ -14,7 +14,7 @@ public class SongDataIOTest {
     
     @Test
     public void buildSongListFromJsonFileTest() throws IOException{
-        List<Song> allSongs = SongDataIO.buildSongListFromJsonFile("src/test/resources/97kSongs.json");
+        List<Song> allSongs = SongDataIO.buildSongListFromJsonFile("src/test/resources/Localify_97k_Tracks.json");
         assertEquals(97350, allSongs.size());
         assertEquals("Resonate", allSongs.get(0).getTitle());
         System.out.println("Sample From json:");
@@ -26,7 +26,7 @@ public class SongDataIOTest {
     
     @Test
     public void buildSongListFromCsvTest() throws IOException{
-        List<Song> allSongs = SongDataIO.buildSongListFromCsv("src/test/resources/Localify_100kSongs.csv");
+        List<Song> allSongs = SongDataIO.buildSongListFromCsv("src/test/resources/Localify_100k_Tracks.csv");
         assertEquals(97350, allSongs.size()); //the amount without any names with commas
         assertEquals("Resonate", allSongs.get(0).getTitle());
         System.out.println("Sample From csv:");
@@ -38,7 +38,7 @@ public class SongDataIOTest {
 
     public static void main(String[] args){
         try {
-            SongDataIO.buildFromCsvAndWriteToJson("src/test/resources/Localify_100kSongs.csv", "src/test/resources/97kSongs.json");
+            SongDataIO.buildFromCsvAndWriteToJson("src/test/resources/Localify_100k_Tracks.csv", "src/test/resources/Localify_97k_Tracks.json");
         }
         catch(IOException e){
             e.printStackTrace();
