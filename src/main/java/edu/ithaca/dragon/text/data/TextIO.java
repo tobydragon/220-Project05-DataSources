@@ -45,16 +45,17 @@ public class TextIO {
       String author=null;
       String id=null;
       while (myReader.hasNextLine()) {
-        String nextLine = myReader.nextLine().toLowerCase();
+        String nextLine = myReader.nextLine();
+        String searchLine = nextLine.toLowerCase();
         try {
-          if (title == null && nextLine.contains("title:")){
+          if (title == null && searchLine.contains("title:")){
               title = nextLine.split(":")[1].strip();
           }
-          if (author == null && nextLine.contains("author:")){
+          if (author == null && searchLine.contains("author:")){
               author = nextLine.split(":")[1].strip();
           }
-          if (id == null && nextLine.contains("ebook #")){
-              String idWithBracket = nextLine.split("ebook #")[1].strip();
+          if (id == null && searchLine.contains("ebook #")){
+              String idWithBracket = searchLine.split("ebook #")[1].strip();
               id = idWithBracket.substring(0, idWithBracket.length()-1);
           }
         }
