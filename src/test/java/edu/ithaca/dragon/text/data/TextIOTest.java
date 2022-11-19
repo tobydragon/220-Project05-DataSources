@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import edu.ithaca.dragon.text.Text;
 
 public class TextIOTest {
-    //commit 84 and 2641 for tests
+    //84 and 2641 commited for tests
 
     @Test
     void testCreateTextFromGutenbergTxt() throws IOException{
@@ -33,6 +33,7 @@ public class TextIOTest {
 
     
     public static void printTextsFromGutenbergTxtDirectory() throws IOException{
+        //Download and put the text files in the directory on the following line, and you should see them printed as objects
         List<Text> allBooks = TextIO.createTextsFromGutenbergTxtDirectory("src/test/resources/texts/");
         System.out.println(allBooks.size());
         for (Text text : allBooks){
