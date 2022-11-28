@@ -3,7 +3,7 @@ package edu.ithaca.dragon.autodj;
 public class Song {
     private String artist;
     private String title;
-    private int duration; // in seconds
+    private int duration; 
     private int playCount;
     private int spotifyPopularity;
     private double spotifyDanceability;
